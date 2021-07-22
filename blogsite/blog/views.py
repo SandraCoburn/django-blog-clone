@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.utils import timezone
-from django.views.generic import (TemplateView, ListView)
+from django.views.generic import (TemplateView, ListView,DetailView, CreateView, UpdateView, DeleteView,)
 from blog.models import Post, Comment
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from blog.forms import PostForm, CommentForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 class AboutView(TemplateView):
@@ -12,5 +16,34 @@ class PostListView(ListView):
 
   #like a sql query on the model. lte -> less than or equal to. Order by more recent date
   def get_queryset(self):
-    return Post.objects.filter(published_date__lte=timezone.now().order_by('-published_date'))
+    return Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
 
+class PostDetailView(DetailView):
+  model = Post
+
+class CreatePostView(LoginRequiredMixin, CreateView):
+  login_url = '/login/'
+  redirect_field_name = 'blog/post_detail.html'
+  form_class = PostForm
+
+  model = Post
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+  login_url = '/login/'
+  redirect_field_name = 'blog/post_detail.html'
+  form_class = PostForm
+
+  model = Post
+
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+  model = Post
+  success_url = reverse_lazy('post_list')
+
+#for unpublished drafts
+class DraftListView(LoginRequiredMixin,ListView):
+  login_url = '/login/'
+  redirect_field_name = 'blog/post_list.html'
+  model = Post
+  
+  def get_queryset(self):
+      return Post.objects.filter(published_date__isnull=True).order_by('created_date')
