@@ -10,6 +10,10 @@
 .bigbrand {
   font-size: 1.5em;
 }
+.centerstage {
+  margin-left: auto;
+  margin-right: auto;
+}
 .awesome {
   font-family: futura;
   font-style: italic;
