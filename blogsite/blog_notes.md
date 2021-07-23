@@ -28,4 +28,5 @@
 ```
 
 - [Medium Editor](https://github.com/yabwe/medium-editor)
-- [CSS styles samples]()
+- [CSS styles samples](http://codepen.io/thapliyalshivam/pen/dvgXVO) to change the font color
+- [CSS font color change animation](https://codepen.io/raaasin/pen/quvHr) with webkit keyframes
