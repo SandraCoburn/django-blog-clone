@@ -14,6 +14,21 @@
   margin-left: auto;
   margin-right: auto;
 }
+.postdate {
+  text-align: center;
+}
+.posttitle {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 3em;
+  text-align: center;
+}
+.postcontent {
+  font-family: 'Roboto', sans-serif;
+}
+.btn-comment {
+  position: absolute;
+  right: 0px;
+}
 .awesome {
   font-family: futura;
   font-style: italic;
