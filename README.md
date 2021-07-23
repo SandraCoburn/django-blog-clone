@@ -6,3 +6,10 @@
 - Python
 - Javascript
 - CSS
+
+## Most used CL commands
+
+- `conda activate myDjangoEnv`
+- `python3 manage.py runserver`
+- `python3 manage.py migrate`
+- `python3 manage.py createmigration blog`
